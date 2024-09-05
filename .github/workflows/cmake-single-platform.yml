@@ -22,12 +22,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: CMake
+        run: cmake
+
       - name: Make
-        run: mkdir build
-             cd build
-             cmake ..
-             make
-             cp -R ../bin .
+        run: make
+
+      - name: Make
+        run: cp -R ../bin .
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
