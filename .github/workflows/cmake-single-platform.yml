@@ -22,8 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: make macos -j$(sysctl -n hw.ncpu)
+      - name: Make
+        run: mkdir build
+             cd build
+             cmake ..
+             make
+             cp -R ../bin .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
